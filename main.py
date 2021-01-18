@@ -35,6 +35,18 @@ async def ping(context):
     return
 
 
+@discord_client.command(
+    name='pic',
+    description='Takes a picture using the webcam',
+    pass_context=True,
+)
+async def pic(context):
+    os.system('fswebcam image.jpg')
+    msg = 'Picture taken at '
+    await context.message.channel.send(content=msg, file=discord.File('image.jpg'))
+    return
+
+
 @tasks.loop(seconds=10.0)
 async def check_printer():
     global LAST_TEMP
