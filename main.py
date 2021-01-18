@@ -5,6 +5,8 @@ from discord.ext.commands import Bot
 from discord.ext import tasks, commands
 from printer_functions import make_client, get_printer_info, get_extruder_temp, get_bed_temp
 from discord.utils import get
+import os
+import datetime
 
 
 discord_client = Bot(command_prefix=config.BOT_PREFIX)
@@ -42,7 +44,7 @@ async def ping(context):
 )
 async def pic(context):
     os.system('fswebcam image.jpg')
-    msg = 'Picture taken at '
+    msg = 'Picture taken at ' + str(datetime.datetime.now())
     await context.message.channel.send(content=msg, file=discord.File('image.jpg'))
     return
 
