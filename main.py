@@ -57,8 +57,7 @@ async def check_printer():
         #ping me
         user = await discord_client.fetch_user(config.USER)
         await user.send('Print Done')
-    else:
-        LAST_TEMP = current_temp
+    LAST_TEMP = current_temp
     return
 
 
